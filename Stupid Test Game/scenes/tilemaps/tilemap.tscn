@@ -14,7 +14,7 @@ extents = Vector2( 8, 8 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
 [node name="Floor2" type="Sprite" parent="." index="1"]
 
@@ -38,15 +38,16 @@ position = Vector2( 48, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 0, 16, 16 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Region", "Z Index" ]
 
 [node name="Wall" type="Sprite" parent="." index="4"]
 
 position = Vector2( 0, 16 )
+z_index = 5
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Region", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
 }

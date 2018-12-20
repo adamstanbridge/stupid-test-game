@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 1, 2 )
 
-[node name="Bullet" type="Area2D" index="0"]
+[node name="Bullet" type="Area2D"]
 
 z_index = 2
 input_pickable = true
@@ -30,6 +30,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
-_sections_unfolded = [ "Region" ]
 
 

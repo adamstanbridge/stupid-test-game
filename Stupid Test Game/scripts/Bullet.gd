@@ -2,20 +2,26 @@ extends Area2D
 
 var speed = 256
 var velocity = Vector2(0, 0)
+var direction = Vector2(0, 0)
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	self.translate(velocity * speed * delta)
+	var offset = (velocity * speed * delta)
+	var new_position = self.position + offset;
+	new_position.x += self.direction.x * get_node("CollisionShape2D").get_shape().get_extents().y
+	new_position.y += self.direction.x * get_node("CollisionShape2D").get_shape().get_extents().y
 	
-	var bodies = get_overlapping_bodies()
-	for body in bodies:
-		if "TileMap" in body.get_name():
-			get_node("Sprite").visible = false
-			self.queue_free()
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(self.position, new_position, [self, get_node("/root/RootNode/Player")])
+	if result:
+		self.queue_free()
+	else:
+		self.translate(offset)
 
 func set_velocity(direction):
 	var up = Vector2(0,-1)
 	self.rotate(up.angle_to(direction))
+	self.direction = direction
 	self.velocity = direction.normalized()
